@@ -13,8 +13,6 @@ becomes C. To change a message back, each letter is replaced by the one three be
 
 ## EXAMPLE:
 
-
-
 ![image](https://github.com/Hemamanigandan/CNS/assets/149653568/eb9c6c43-8c80-4cdd-b9d4-91705a311c79)
 
 
@@ -27,8 +25,55 @@ becomes C. To change a message back, each letter is replaced by the one three be
 ### STEP-5: Display the cipher text obtained above.
 
 
-PROGRAM :-
+## PROGRAM :-
+```
+ #include <string.h>
+ #include <ctype.h>
+ int main() {
+ char plain[100], cipher[100];
+ int key, i, length;
+ printf("Enter the plain text: ");
+ scanf("%s", plain);
+printf("Enter the key value: ");
+ scanf("%d", &key);
+ printf("\nPLAIN TEXT: %s", plain);
+ printf("\nENCRYPTED TEXT: ");
+ length = strlen(plain);
+ for (i = 0; i < length; i++) {
+ cipher[i] = plain[i] + key;
+ // Handling uppercase letters
+ if (isupper(plain[i]) && cipher[i] > 'Z') {
+ cipher[i] = cipher[i]- 26;
+ }
+ // Handling lowercase letters
+ if (islower(plain[i]) && cipher[i] > 'z') {
+ cipher[i] = cipher[i]- 26;
+ }
+ printf("%c", cipher[i]);
+ }
+ cipher[length] = '\0'; // Null-terminate the cipher text string
+ printf("\nDECRYPTED TEXT: ");
+ for (i = 0; i < length; i++) {
+ plain[i] = cipher[i]- key;
+ // Handling uppercase letters
+ if (isupper(cipher[i]) && plain[i] < 'A') {
+ plain[i] = plain[i] + 26;
+ }
+ // Handling lowercase letters
+if (islower(cipher[i]) && plain[i] < 'a') {
+ plain[i] = plain[i] + 26;
+ }
+ printf("%c", plain[i]);
+ }
+ plain[length] = '\0'; // Null-terminate the plain text string
+ return 0;
+ }
+```
 
 
+## OUTPUT :-
+![image](https://github.com/user-attachments/assets/ca360b1a-76aa-4e91-b1b2-026851014534)
 
-OUTPUT :-
+
+## Result:-
+The program is executed successfully.
